@@ -61,7 +61,7 @@ Eth_walletSIM 2/
 
 ## ▶️ Esecuzione
 
-1. Configura il file `.env` con:
+1. Configurazione  file `.env` con:
 WEB3_PROVIDER_URL=http://127.0.0.1:7545
 CHIAVE_PRIVATA_1=...
 CHIAVE_PRIVATA_2=...
@@ -81,7 +81,7 @@ pip install web3 python-dotenv py-solc-x
 
 python wallet_main.py
 
-Abbiamo creato un ambiente virtuale (venv) per: 
+Ho creato un ambiente virtuale (venv) per: 
 -Isolare le dipendenze del progetto da quelle di sistema
 -Evitare conflitti tra versioni di librerie in progetti diversi
 -Rendere il progetto portabile, facilitando la riproducibilità su altri ambienti o macchine
