@@ -120,6 +120,12 @@ Ogni transazione è stata automaticamente minata nel proprio blocco grazie all'o
 <img width="2400" height="1440" alt="Screenshot 2025-07-11 alle 16 03 52" src="https://github.com/user-attachments/assets/d21be21a-769f-409d-a141-1b03eff98b62" />
 
 
+Questa schermata di Ganache mostra le 4 transazioni eseguite durante il test:
+
+-  **🔧 Contract Creation** – Deploy del contratto MultiSigWallet, con alto consumo di gas (8.000.000), ma nessun trasferimento di ETH.
+-  **💸 Value Transfer** – Invio di 0.1 ETH (in wei) dal primo al secondo account.
+-  **📞 Contract Call** – Prima chiamata a `submitTransaction()` per proporre una transazione.
+-  **📞 Contract Call** – Seconda chiamata a `submitTransaction()` con nuovi parametri.
 
 
 
