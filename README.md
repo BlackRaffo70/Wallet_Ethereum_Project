@@ -48,10 +48,15 @@ La mia prova pratica è consistita in una **simulazione di un wallet Multi-Signa
 Eth_walletSIM 2/
 │
 ├── wallet_main.py
+│
 ├── wallet_contract.sol
+│
 ├── wallet_contract.json
+│
 ├── wallet.json
+│
 ├── .env
+│
 └── venv/
 
 ## 🧪 Requisiti
@@ -73,9 +78,13 @@ CHIAVE_PRIVATA_2=...
 #!/bin/bash
 
 python3 -m venv venv
+
 source venv/bin/activate
+
 pip install --upgrade pip
+
 pip install web3 python-dotenv py-solc-x
+
 python wallet_main.py
 
 Abbiamo creato un ambiente virtuale (venv) per: 
