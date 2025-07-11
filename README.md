@@ -63,12 +63,14 @@ Eth_walletSIM 2/
 
 1. Configurazione  file `.env` con:
 WEB3_PROVIDER_URL=http://127.0.0.1:7545
+
 CHIAVE_PRIVATA_1=...
+
 CHIAVE_PRIVATA_2=...
 
-2. Avvia Ganache.
+3. Avvia Ganache.
 
-3. Esegui:
+4. Esegui:
 #!/bin/bash
 
 python3 -m venv venv
