@@ -55,7 +55,7 @@ Eth_walletSIM 2/
 
 ## 🧪 Requisiti
 
-- Python 3.9+
+- Python 3.8.6+
 - Ganache ( Impostando limite gas a 12000000 (12M)
 - Moduli: `web3`, `python-dotenv`, `py-solc-x`
 
