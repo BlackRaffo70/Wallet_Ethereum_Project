@@ -37,12 +37,6 @@ La mia prova pratica è consistita in una **simulazione di un wallet Multi-Signa
 
 - Due chiamate a `submitTransaction` sul contratto per proporre una transazione da 0.002 ETH.
 
-## ⚠️ Funzionalità **non** ancora implementate
-
-- `confirmTransaction` – conferma delle transazioni proposte.
-- `executeTransaction` – esecuzione delle transazioni confermate.
-- Verifica della sicurezza e test automatici.
-
 ## 📁 Esempio di struttura del progetto
 
 Eth_walletSIM 2/
