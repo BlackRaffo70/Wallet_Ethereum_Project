@@ -63,25 +63,23 @@ Eth_walletSIM 2/
 
 1. Configurazione  file `.env` con:
 WEB3_PROVIDER_URL=http://127.0.0.1:7545
-
-CHIAVE_PRIVATA_1=...
-
-CHIAVE_PRIVATA_2=...
+-CHIAVE_PRIVATA_1=...
+-CHIAVE_PRIVATA_2=...
 
 3. Avvia Ganache.
 
 4. Esegui:
 #!/bin/bash
 
-python3 -m venv venv
+- python3 -m venv venv
 
-source venv/bin/activate
+- source venv/bin/activate
 
-pip install --upgrade pip
+- pip install --upgrade pip
 
-pip install web3 python-dotenv py-solc-x
+- pip install web3 python-dotenv py-solc-x
 
-python wallet_main.py
+- python wallet_main.py
 
 Ho creato un ambiente virtuale (venv) per: 
 - Isolare le dipendenze del progetto da quelle di sistema
