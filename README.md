@@ -56,7 +56,7 @@ Eth_walletSIM 2/
 ## 🧪 Requisiti
 
 - Python 3.9+
-- Ganache
+- Ganache ( Impostando limite gas a 12000000 (12M)
 - Moduli: `web3`, `python-dotenv`, `py-solc-x`
 
 ## ▶️ Esecuzione
@@ -88,7 +88,8 @@ Ho creato un ambiente virtuale (venv) per:
 - Evitare conflitti tra versioni di librerie in progetti diversi
 - Rendere il progetto portabile, facilitando la riproducibilità su altri ambienti o macchine
 
-  🖥️ Output attesi
+ 
+ ## 🖥️ Output attesi
 Eseguendo lo script wallet_main.py, si ottiene una sequenza di messaggi nel terminale che confermano le varie fasi del processo:
 
 <img width="1406" height="314" alt="Screenshot 2025-07-11 alle 15 54 31" src="https://github.com/user-attachments/assets/923103d2-855a-4d9e-b77d-69c0da559b92" />
@@ -99,4 +100,29 @@ Lettura corretta dell’ambiente e connessione al nodo Ethereum
 Compilazione del contratto Solidity (.sol)
 Deploy del wallet sulla blockchain (con indirizzo generato)
 Invio di ETH da un account all’altro e successivo submit della transazione
+
+<img width="2400" height="778" alt="Screenshot 2025-07-11 alle 16 03 35" src="https://github.com/user-attachments/assets/bfc30181-060e-4cda-9a19-3a7edefdfba1" />
+📸 Esempio da Ganache
+Nella schermata inclusa, Ganache mostra:
+
+Un primo account ha inviato una transazione da 0.1 ETH a un secondo account.
+Il mittente ha pagato 0.1 ETH + costo del gas (quindi ha perso leggermente più di 0.1).
+Il destinatario ha ricevuto esattamente 0.1 ETH, perché il costo del gas viene pagato solo dal mittente.
+Ogni transazione è stata automaticamente minata nel proprio blocco grazie all'opzione AUTOMINING.
+
+<img width="2400" height="934" alt="Screenshot 2025-07-11 alle 16 03 46" src="https://github.com/user-attachments/assets/cf743756-4bd1-42bb-b8d4-2b67e413f9d8" />
+
+1. **🧱 Blocco 0 (Genesis)** – Blocco iniziale creato automaticamente da Ganache, senza transazioni.
+2. **🚀 Blocco 1** – Deploy del contratto MultiSigWallet (gas alto: 8.000.000).
+3. **💸 Blocco 2** – Invio di 0.1 ETH dal primo al secondo account (gas minimo: 21.000).
+4. **✍️ Blocco 3** – Prima chiamata a `submitTransaction` per proporre una transazione.
+5. **🔁 Blocco 4** – Seconda chiamata a `submitTransaction` con parametri diversi.
+
+
+<img width="2400" height="1440" alt="Screenshot 2025-07-11 alle 16 03 52" src="https://github.com/user-attachments/assets/d21be21a-769f-409d-a141-1b03eff98b62" />
+
+
+
+
+
 
