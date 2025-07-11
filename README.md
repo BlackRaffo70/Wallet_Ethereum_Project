@@ -82,7 +82,7 @@ pip install web3 python-dotenv py-solc-x
 python wallet_main.py
 
 Ho creato un ambiente virtuale (venv) per: 
--Isolare le dipendenze del progetto da quelle di sistema
--Evitare conflitti tra versioni di librerie in progetti diversi
--Rendere il progetto portabile, facilitando la riproducibilità su altri ambienti o macchine
+- Isolare le dipendenze del progetto da quelle di sistema
+- Evitare conflitti tra versioni di librerie in progetti diversi
+- Rendere il progetto portabile, facilitando la riproducibilità su altri ambienti o macchine
 
