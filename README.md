@@ -110,11 +110,11 @@ Ogni transazione è stata automaticamente minata nel proprio blocco grazie all'o
 
 <img width="2400" height="934" alt="Screenshot 2025-07-11 alle 16 03 46" src="https://github.com/user-attachments/assets/cf743756-4bd1-42bb-b8d4-2b67e413f9d8" />
 
-1. **🧱 Blocco 0 (Genesis)** – Blocco iniziale creato automaticamente da Ganache, senza transazioni.
-2. **🚀 Blocco 1** – Deploy del contratto MultiSigWallet (gas alto: 8.000.000).
-3. **💸 Blocco 2** – Invio di 0.1 ETH dal primo al secondo account (gas minimo: 21.000).
-4. **✍️ Blocco 3** – Prima chiamata a `submitTransaction` per proporre una transazione.
-5. **🔁 Blocco 4** – Seconda chiamata a `submitTransaction` con parametri diversi.
+-  **🧱 Blocco 0 (Genesis)** – Blocco iniziale creato automaticamente da Ganache, senza transazioni.
+-  **🚀 Blocco 1** – Deploy del contratto MultiSigWallet (gas alto: 8.000.000).
+-  **💸 Blocco 2** – Invio di 0.1 ETH dal primo al secondo account (gas minimo: 21.000).
+-  **✍️ Blocco 3** – Prima chiamata a `submitTransaction` per proporre una transazione.
+-  **🔁 Blocco 4** – Seconda chiamata a `submitTransaction` con parametri diversi.
 
 
 <img width="2400" height="1440" alt="Screenshot 2025-07-11 alle 16 03 52" src="https://github.com/user-attachments/assets/d21be21a-769f-409d-a141-1b03eff98b62" />
