@@ -47,11 +47,17 @@ La mia prova pratica è consistita in una **simulazione di un wallet Multi-Signa
 
 Eth_walletSIM 2/
 │
+
 ├── wallet_main.py
+
 ├── wallet_contract.sol
+
 ├── wallet_contract.json
+
 ├── wallet.json
+
 ├── .env
+
 └── venv/
 
 ## 🧪 Requisiti
