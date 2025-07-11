@@ -88,3 +88,15 @@ Ho creato un ambiente virtuale (venv) per:
 - Evitare conflitti tra versioni di librerie in progetti diversi
 - Rendere il progetto portabile, facilitando la riproducibilità su altri ambienti o macchine
 
+  🖥️ Output attesi
+Eseguendo lo script wallet_main.py, si ottiene una sequenza di messaggi nel terminale che confermano le varie fasi del processo:
+
+<img width="1406" height="314" alt="Screenshot 2025-07-11 alle 15 54 31" src="https://github.com/user-attachments/assets/923103d2-855a-4d9e-b77d-69c0da559b92" />
+
+
+Questi messaggi indicano:
+Lettura corretta dell’ambiente e connessione al nodo Ethereum
+Compilazione del contratto Solidity (.sol)
+Deploy del wallet sulla blockchain (con indirizzo generato)
+Invio di ETH da un account all’altro e successivo submit della transazione
+
