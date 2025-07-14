@@ -82,7 +82,7 @@ $ pip install -r requirements.txt  # oppure usa il comando qui sotto
 $ pip install web3 python-dotenv py-solc-x
 
 # 3 – Compila/Deploy/Interagisci
-$ cp .env.example .env        # inserisci RPC e chiavi + nuovo gas limit(1200000 nel nostro caso)
+$ cp .env.example .env        # inserisci adress wallet e chiavi + nuovo gas limit(1200000 nel nostro caso) 
 $ ganache --gasLimit 12000000 # avvia Ganache
 $ python wallet_main.py       # esegui lo script end‑to‑end
 ```
