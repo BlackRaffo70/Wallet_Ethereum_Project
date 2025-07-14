@@ -66,9 +66,9 @@ Eth_walletSIM 2/
 - CHIAVE_PRIVATA_1=...
 - CHIAVE_PRIVATA_2=...
 
-3. Avvia Ganache.
+2. Avvia Ganache.
 
-4. Esegui:
+3. Esegui:
 #!/bin/bash
 
 - python3 -m venv venv
