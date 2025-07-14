@@ -99,7 +99,8 @@ Compilazione del contratto Solidity (.sol)
 Deploy del wallet sulla blockchain (con indirizzo generato)
 Invio di ETH da un account all’altro e successivo submit della transazione
 
-<img width="2400" height="778" alt="Screenshot 2025-07-11 alle 16 03 35" src="https://github.com/user-attachments/assets/bfc30181-060e-4cda-9a19-3a7edefdfba1" />
+<img width="1201" height="380" alt="image" src="https://github.com/user-attachments/assets/531c4389-0f0d-444d-9f40-df697eec75bf" />
+
 📸 Esempio da Ganache
 Nella schermata inclusa, Ganache mostra:
 
@@ -108,7 +109,8 @@ Il mittente ha pagato 0.1 ETH + costo del gas (quindi ha perso leggermente più 
 Il destinatario ha ricevuto esattamente 0.1 ETH, perché il costo del gas viene pagato solo dal mittente.
 Ogni transazione è stata automaticamente minata nel proprio blocco grazie all'opzione AUTOMINING.
 
-<img width="2400" height="934" alt="Screenshot 2025-07-11 alle 16 03 46" src="https://github.com/user-attachments/assets/cf743756-4bd1-42bb-b8d4-2b67e413f9d8" />
+<img width="1201" height="405" alt="image" src="https://github.com/user-attachments/assets/46783571-9187-4298-93c7-4276727c5872" />
+
 
 -  **🧱 Blocco 0 (Genesis)** – Blocco iniziale creato automaticamente da Ganache, senza transazioni.
 -  **🚀 Blocco 1** – Deploy del contratto MultiSigWallet (gas alto: 8.000.000).
@@ -117,7 +119,8 @@ Ogni transazione è stata automaticamente minata nel proprio blocco grazie all'o
 
 
 
-<img width="2400" height="1440" alt="Screenshot 2025-07-11 alle 16 03 52" src="https://github.com/user-attachments/assets/d21be21a-769f-409d-a141-1b03eff98b62" />
+<img width="1201" height="573" alt="image" src="https://github.com/user-attachments/assets/4b7b523f-09af-4cd8-a910-a3b6988f2bd8" />
+
 
 
 Questa schermata di Ganache mostra le 3 transazioni eseguite durante il test:
