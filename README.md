@@ -1,6 +1,6 @@
 # 🔐 Eth\_walletSIM – Simulatore di Wallet Multi‑Sig su Ethereum
 
-> **Hands‑on** di un portafoglio smart‑contract multi‑firma (m‑of‑n) sviluppato per l’esame di **Sicurezza dell’Informazione**. Il progetto mostra tutte le fasi di *compilazione, deploy e uso* di un Multi‑Sig Wallet su una blockchain Ethereum locale (Ganache).
+> **Simulazione** di un portafoglio smart‑contract multi‑firma (m‑of‑n) sviluppato per l’esame di **Sicurezza dell’Informazione**. Il progetto mostra tutte le fasi di *compilazione, deploy e uso* di un Multi‑Sig Wallet su una blockchain Ethereum locale (Ganache).
 
 ---
 
@@ -47,11 +47,11 @@
 | `getTransaction(txIndex)`            | Restituisce i dettagli di una transazione               |
 | `getTransactionCount()`              | Numero di proposte totali                               |
 
-> **Eventi emessi**: `SubmitTransaction`, `ConfirmTransaction`, `ExecuteTransaction` – utili per UI o indexer off‑chain.
+> **Eventi emessi**: `SubmitTransaction`, `ConfirmTransaction`, `ExecuteTransaction`
 
 ### 🔄 Flusso dimostrativo (`wallet_main.py`)
 
-1. **Funding** iniziale: 10 ETH inviati da `owners[0]` al contratto (`receive()`)
+1. **Finanziamento contratto** iniziale: 10 ETH inviati da `owners[0]` al contratto (`receive()`)
 2. **Transfer standard**: 1 ETH da `owner A` → `owner B` (direct send)
 3. **Flusso Multi‑Sig**
 
@@ -87,7 +87,7 @@ $ ganache --gasLimit 12000000 # avvia Ganache
 $ python wallet_main.py       # esegui lo script end‑to‑end
 ```
 
-> **Nota:** se preferisci **Truffle**:
+> **Truffle**:
 >
 > ```bash
 > $ cd truffle && npm install
@@ -109,28 +109,4 @@ Eth_walletSIM/
 └── venv/
 ```
 
----
 
-## 🛡️ Considerazioni di sicurezza
-
-* Solo gli address elencati in `owners` possono proporre/confermare TX
-* Ogni owner può confermare una proposta **una sola volta** (`isConfirmed` mapping)
-* Esecuzione bloccata finché non vengono raggiunte le conferme richieste
-* Uso di `call{value:}` con **bubble‑up dell’errore** ➜ reentrancy mitigata (nessun `transfer`) 
-* Possibilità di scalare a `n` owner e cambiare la soglia in fase di deploy
-
----
-
-## 🚀 Estensioni possibili
-
-* Revoca di una conferma (`revokeConfirmation`)
-* Aggiunta/Rimozione dinamica degli owner
-* Front‑end React + Ethers.js/Metamask
-* Deploy su testnet (Sepolia) con script Hardhat/Foundry
-* Integrazione di unit test automatici (pytest‑brownie)
-
----
-
-## 📄 Licenza
-
-Codice rilasciato sotto **MIT License**.
