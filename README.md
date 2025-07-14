@@ -62,10 +62,14 @@
 
 ### 🖼️ Output d’esempio
 
-Sono inclusi screenshot di:
+ <img width="1010" height="298" alt="Screenshot 2025-07-14 alle 16 58 50" src="https://github.com/user-attachments/assets/a2b435a0-e159-4951-91d0-a495a1195fbd" />
+<img width="2880" height="1800" alt="Screenshot 2025-07-14 alle 16 59 21" src="https://github.com/user-attachments/assets/6a595135-4d7b-4cfc-b756-0562af25b58d" />
+<img width="2880" height="708" alt="Screenshot 2025-07-14 alle 16 59 26" src="https://github.com/user-attachments/assets/08c81ebf-024d-4086-b05b-67206a08ed36" />
+<img width="2880" height="1134" alt="Screenshot 2025-07-14 alle 16 59 38" src="https://github.com/user-attachments/assets/ce0490f8-03f5-4a29-92e3-67edce634769" />
 
-* **Terminale** (compilazione, deploy, transazioni)
-* **Ganache UI** con i blocchi 0‑3 e le relative transazioni (Contract Creation, Value Transfer, Contract Call)
+
+
+
 
 ---
 
