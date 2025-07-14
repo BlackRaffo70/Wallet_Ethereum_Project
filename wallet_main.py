@@ -108,12 +108,5 @@ if __name__ == "__main__":
         wallet.functions.submitTransaction(recipient, w3.to_wei(0.002, "ether"), b""),
         owners[0]
     )
-    rec = send_tx(
-        wallet.functions.submitTransaction(
-            recipient,
-            w3.to_wei(0.002, "ether"),
-            b""
-        ),
-        owners[0]
-    )
+   
     print("✅ transazione eseguita")
