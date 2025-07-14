@@ -1,135 +1,136 @@
-# 🔐 Eth_walletSIM – Simulatore di Wallet Multi-Sig su Ethereum
+# 🔐 Eth\_walletSIM – Simulatore di Wallet Multi‑Sig su Ethereum
 
-La mia prova pratica è consistita in una **simulazione di un wallet Multi-Signature** su blockchain Ethereum, realizzata per la prova di Sicurezza dell’Informazione.
+> **Hands‑on** di un portafoglio smart‑contract multi‑firma (m‑of‑n) sviluppato per l’esame di **Sicurezza dell’Informazione**. Il progetto mostra tutte le fasi di *compilazione, deploy e uso* di un Multi‑Sig Wallet su una blockchain Ethereum locale (Ganache).
 
-## 📦 Contenuto del progetto
+---
 
-- `wallet_contract.sol` – Contratto Solidity che implementa un wallet multi-firma.
-- `wallet_main.py` – Script Python che compila, deploya e interagisce con il contratto.
-- `wallet_contract.json` – ABI e bytecode generati dalla compilazione.
-- `.env` – File con variabili d’ambiente (URL RPC, chiavi private).
+## 📦 Contenuto del repository
+
+| Path                   | Descrizione                                                                  |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| `wallet_contract.sol`  | Smart‑contract Solidity 0.8.17 del Multi‑Sig Wallet                          |
+| `wallet_main.py`       | Script Python che compila, deploya e interagisce con il contratto (Web3.py)  |
+| `truffle/`             | Configurazione alternativa per deploy/test tramite **Truffle** + **Ganache** |
+| `wallet_contract.json` | ABI + bytecode del contratto già compilato                                   |
+| `.env`                 | Variabili d’ambiente (RPC URL e chiavi private)                              |
+| `venv/`                | Ambiente virtuale Python (ignorato da git)                                   |
+
+---
 
 ## ⚙️ Funzionalità implementate
 
-### ✅ Setup
+### 🛠️ Setup & Ambiente
 
-- Connessione a un nodo Ganache.
-- Lettura delle chiavi private e configurazione degli account.
-- Verifica del gas limit e connessione alla chain.
+* Connessione a un nodo **Ganache** (HTTP RPC)
+* Lettura di due chiavi private da `.env` e inizializzazione degli **owner**
+* Verifica del `gasLimit` del blocco più recente
 
-### 🛠️ Compilazione del contratto
+### 🏗️ Compilazione del contratto (`wallet_main.py`)
 
-- Utilizza Solidity 0.8.26.
-- Estrae ABI e bytecode.
-- Salva l'output in formato JSON.
+* Installazione automatica del compilatore **Solidity 0.8.17** (via `py‑solc‑x`) se mancante
+* Estrazione di **ABI** e **bytecode** e serializzazione in `wallet_contract.json`
 
-### 🚀 Deploy del contratto
+### 🚀 Deploy del Multi‑Sig Wallet
 
-- Deploy del wallet MultiSig con 2 proprietari.
-- 1 conferma richiesta per eseguire una transazione.
-- Stampa dell’indirizzo del contratto.
+* Deploy con *N = 2* proprietari
+* **`numConfirmationsRequired` parametrico** (nel test: 1)
+* Stampa su console dell’indirizzo del contratto
 
-### 💸 Invio di ETH diretto
+### 💰 Operazioni sul Wallet
 
-- Trasferimento diretto di **0.01 ETH** da `owners[0]` a `owners[1]`.
+| Funzione                             | Scopo                                                   |
+| ------------------------------------ | ------------------------------------------------------- |
+| `receive()` *(payable)*              | Deposito ETH diretto da qualunque address               |
+| `submitTransaction(to, value, data)` | Un owner propone una transazione                        |
+| `confirmTransaction(txIndex)`        | Un owner approva la proposta (una sola volta)           |
+| `executeTransaction(txIndex)`        | Esegue se `numConfirmations ≥ numConfirmationsRequired` |
+| `getTransaction(txIndex)`            | Restituisce i dettagli di una transazione               |
+| `getTransactionCount()`              | Numero di proposte totali                               |
 
-### 📝 Proposta di transazione MultiSig
+> **Eventi emessi**: `SubmitTransaction`, `ConfirmTransaction`, `ExecuteTransaction` – utili per UI o indexer off‑chain.
 
-- Due chiamate a `submitTransaction` sul contratto per proporre una transazione da 0.002 ETH.
+### 🔄 Flusso dimostrativo (`wallet_main.py`)
 
-## 📁 Esempio di struttura del progetto
+1. **Funding** iniziale: 10 ETH inviati da `owners[0]` al contratto (`receive()`)
+2. **Transfer standard**: 1 ETH da `owner A` → `owner B` (direct send)
+3. **Flusso Multi‑Sig**
 
-Eth_walletSIM 2/
-│
+   1. `owner A` chiama `submitTransaction()` per inviare 5 ETH a sé stesso (solo a fini demo)
+   2. `owner B` chiama `confirmTransaction()` sullo stesso indice
+   3. `owner A` chiama `executeTransaction()` ➜ trasferimento on‑chain eseguito
+4. Console log del saldo finale del contratto e degli eventi intercettati
+
+### 🖼️ Output d’esempio
+
+Sono inclusi screenshot di:
+
+* **Terminale** (compilazione, deploy, transazioni)
+* **Ganache UI** con i blocchi 0‑3 e le relative transazioni (Contract Creation, Value Transfer, Contract Call)
+
+---
+
+## ▶️ Esecuzione rapida
+
+```bash
+# 1 – Clona il repo
+$ git clone https://github.com/BlackRaffo70/Wallet_Ethereum_Project.git
+$ cd Wallet_Ethereum_Project
+
+# 2 – Crea l’ambiente virtuale
+$ python3 -m venv venv && source venv/bin/activate
+$ pip install -r requirements.txt  # oppure usa il comando qui sotto
+$ pip install web3 python-dotenv py-solc-x
+
+# 3 – Compila/Deploy/Interagisci
+$ cp .env.example .env        # inserisci RPC e chiavi
+$ ganache --gasLimit 12000000 # avvia Ganache
+$ python wallet_main.py       # esegui lo script end‑to‑end
+```
+
+> **Nota:** se preferisci **Truffle**:
+>
+> ```bash
+> $ cd truffle && npm install
+> $ truffle compile && truffle migrate
+> ```
+
+---
+
+## 📂 Struttura del progetto (tree)
+
+```
+Eth_walletSIM/
 ├── wallet_main.py
-
 ├── wallet_contract.sol
-
 ├── wallet_contract.json
-
-├── wallet.json
-
+├── truffle/
+│   └── ...
 ├── .env
-
 └── venv/
+```
 
-## 🧪 Requisiti
+---
 
-- Python 3.8.6+
-- Ganache ( Impostando limite gas a 12000000 (12M)
-- Moduli: `web3`, `python-dotenv`, `py-solc-x`
+## 🛡️ Considerazioni di sicurezza
 
-## ▶️ Esecuzione
+* Solo gli address elencati in `owners` possono proporre/confermare TX
+* Ogni owner può confermare una proposta **una sola volta** (`isConfirmed` mapping)
+* Esecuzione bloccata finché non vengono raggiunte le conferme richieste
+* Uso di `call{value:}` con **bubble‑up dell’errore** ➜ reentrancy mitigata (nessun `transfer`) 
+* Possibilità di scalare a `n` owner e cambiare la soglia in fase di deploy
 
-1. Configurazione  file `.env` con:
-- WEB3_PROVIDER_URL=http://127.0.0.1:7545
-- CHIAVE_PRIVATA_1=...
-- CHIAVE_PRIVATA_2=...
+---
 
-2. Avvia Ganache.
+## 🚀 Estensioni possibili
 
-3. Esegui:
-#!/bin/bash
+* Revoca di una conferma (`revokeConfirmation`)
+* Aggiunta/Rimozione dinamica degli owner
+* Front‑end React + Ethers.js/Metamask
+* Deploy su testnet (Sepolia) con script Hardhat/Foundry
+* Integrazione di unit test automatici (pytest‑brownie)
 
-- python3 -m venv venv
+---
 
-- source venv/bin/activate
+## 📄 Licenza
 
-- pip install --upgrade pip
-
-- pip install web3 python-dotenv py-solc-x
-
-- python wallet_main.py
-
-Ho creato un ambiente virtuale (venv) per: 
-- Isolare le dipendenze del progetto da quelle di sistema
-- Evitare conflitti tra versioni di librerie in progetti diversi
-- Rendere il progetto portabile, facilitando la riproducibilità su altri ambienti o macchine
-
- 
- ## 🖥️ Output attesi
-Eseguendo lo script wallet_main.py, si ottiene una sequenza di messaggi nel terminale che confermano le varie fasi del processo:
-
-<img width="1406" height="314" alt="Screenshot 2025-07-11 alle 15 54 31" src="https://github.com/user-attachments/assets/923103d2-855a-4d9e-b77d-69c0da559b92" />
-
-
-Questi messaggi indicano:
-Lettura corretta dell’ambiente e connessione al nodo Ethereum
-Compilazione del contratto Solidity (.sol)
-Deploy del wallet sulla blockchain (con indirizzo generato)
-Invio di ETH da un account all’altro e successivo submit della transazione
-
-<img width="1201" height="380" alt="image" src="https://github.com/user-attachments/assets/531c4389-0f0d-444d-9f40-df697eec75bf" />
-
-📸 Esempio da Ganache
-Nella schermata inclusa, Ganache mostra:
-
-Un primo account ha inviato una transazione da 0.1 ETH a un secondo account.
-Il mittente ha pagato 0.1 ETH + costo del gas (quindi ha perso leggermente più di 0.1).
-Il destinatario ha ricevuto esattamente 0.1 ETH, perché il costo del gas viene pagato solo dal mittente.
-Ogni transazione è stata automaticamente minata nel proprio blocco grazie all'opzione AUTOMINING.
-
-<img width="1201" height="405" alt="image" src="https://github.com/user-attachments/assets/46783571-9187-4298-93c7-4276727c5872" />
-
-
--  **🧱 Blocco 0 (Genesis)** – Blocco iniziale creato automaticamente da Ganache, senza transazioni.
--  **🚀 Blocco 1** – Deploy del contratto MultiSigWallet (gas alto: 8.000.000).
--  **💸 Blocco 2** – Invio di 0.1 ETH dal primo al secondo account (gas minimo: 21.000).
--  **✍️ Blocco 3** – Chiamata a `submitTransaction` per proporre una transazione.
-
-
-
-<img width="1201" height="573" alt="image" src="https://github.com/user-attachments/assets/4b7b523f-09af-4cd8-a910-a3b6988f2bd8" />
-
-
-
-Questa schermata di Ganache mostra le 3 transazioni eseguite durante il test:
-
--  **🔧 Contract Creation** – Deploy del contratto MultiSigWallet, con alto consumo di gas (8.000.000), ma nessun trasferimento di ETH.
--  **💸 Value Transfer** – Invio di 0.1 ETH (in wei) dal primo al secondo account.
--  **📞 Contract Call** – Chiamata a `submitTransaction()` per proporre una transazione.
-
-
-
-
-
+Codice rilasciato sotto **MIT License**.
